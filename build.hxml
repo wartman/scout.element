@@ -1,0 +1,6 @@
+-cp src
+-cp test
+-cp example/todo/src
+-lib scout.html
+-main Test
+-js dist/test.js
