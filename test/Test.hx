@@ -10,8 +10,8 @@ class Test {
   public static function main() {
     var todos = [
       new Todo('0', 'Stuff', true),
-      new Todo('1', 'Stuff', false),
-      new Todo('2', 'Stuff', false) 
+      new Todo('1', 'Other Stuff', false),
+      new Todo('2', 'More Stuff', false) 
     ];
     html('<todo-list .todos="${todos}" />')
       .render(Browser.document.getElementById('root'));
