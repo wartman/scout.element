@@ -9,6 +9,7 @@ import todo.view.TodoInput;
 @:element('todo-list')
 class TodoList extends ScoutElement {
 
+  @:attr('class') var className:String = 'todo-list';
   @:prop var todos:Array<Todo> = [];
   var initValue:String = '';
 
@@ -22,7 +23,7 @@ class TodoList extends ScoutElement {
   }
 
   override function render() return html('
-    <todo-input label="create" .value="${initValue}" .onSubmit="${makeTodo}" />
+    <todo-input .label="create" .value="${initValue}" .onSubmit="${makeTodo}" />
     <ul class="todo-list">
       ${[ for (todo in todos) html('<todo-item .todo="${todo}" />') ]}
     </ul>

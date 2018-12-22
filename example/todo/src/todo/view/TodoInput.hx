@@ -8,8 +8,8 @@ import scout.html.Api.html;
 @:element('todo-input')
 class TodoInput extends ScoutElement {
 
-  @:attr var className:String = 'edit';
-  @:attr var label:String = 'Create';
+  @:attr('class') var className:String = 'todo-edit';
+  @:prop var label:String = 'Create';
   @:prop var value:String = '';
   @:prop var onSubmit:(value:String)->Void;
 
