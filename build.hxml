@@ -1,6 +1,9 @@
+extraParams.hxml
+
 -cp src
 -cp test
 -cp example/todo/src
 -lib scout.html
 -main Test
+-D js-es=6
 -js dist/test.js

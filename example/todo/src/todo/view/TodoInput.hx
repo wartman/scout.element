@@ -3,12 +3,12 @@ package todo.view;
 import js.html.InputElement;
 import js.html.Event;
 import scout.element.ScoutElement;
-import scout.html.Api.html;
+import scout.html.Template.html;
 
 @:element('todo-input')
 class TodoInput extends ScoutElement {
 
-  @:attr('class') var className:String = 'todo-edit';
+  // @:attr('class') var className:String = 'todo-edit';
   @:prop var label:String = 'Create';
   @:prop var value:String = '';
   @:prop var onSubmit:(value:String)->Void;
@@ -27,13 +27,13 @@ class TodoInput extends ScoutElement {
 
   override function render() return html('
     <input 
-      class="${className}"
-      value="${value}"
-      on:change="${handleChange}"
+      class="todo-edit"
+      value=${value}
+      onChange=${handleChange}
     />
     <button 
       class="create"
-      on:click="${handleSubmit}"
+      onClick=${handleSubmit}
     >${label}</button>
   ');
 

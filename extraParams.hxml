@@ -1,0 +1,1 @@
+--macro haxe.macro.Compiler.includeFile('scout/element/CustomElement.js')

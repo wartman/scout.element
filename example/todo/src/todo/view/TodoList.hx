@@ -1,15 +1,13 @@
 package todo.view;
 
 import scout.element.ScoutElement;
-import scout.html.Api.html;
+import scout.html.Template.html;
 import todo.model.Todo;
-import todo.view.TodoItem;
-import todo.view.TodoInput;
 
 @:element('todo-list')
 class TodoList extends ScoutElement {
 
-  @:attr('class') var className:String = 'todo-list';
+  // @:attr('class') var className:String = 'todo-list';
   @:prop var todos:Array<Todo> = [];
   var initValue:String = '';
 
@@ -22,11 +20,13 @@ class TodoList extends ScoutElement {
     update();
   }
 
-  override function render() return html('
-    <todo-input .label="create" .value="${initValue}" .onSubmit="${makeTodo}" />
-    <ul class="todo-list">
-      ${[ for (todo in todos) html('<todo-item .todo="${todo}" />') ]}
-    </ul>
-  ');
+  override function render() {
+    return html('
+      <todo-input .label="create" .value=${initValue} .onSubmit=${makeTodo} />
+      <ul class="todo-list">
+        ${[ for (todo in todos) html('<todo-item .todo=${todo} />') ]}
+      </ul>
+    ');
+  }
 
 }

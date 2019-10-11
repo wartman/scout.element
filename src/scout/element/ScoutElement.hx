@@ -1,11 +1,9 @@
 package scout.element;
 
-import js.html.Element;
 import haxe.ds.Map;
 // import haxe.Timer;
 import scout.html.Renderer;
 import scout.html.TemplateResult;
-import scout.html.CustomElement;
 
 enum ScoutElementState {
   StateBooting;
@@ -14,49 +12,42 @@ enum ScoutElementState {
 }
 
 @:autoBuild(scout.element.macro.ScoutElementBuilder.build())
-@:noElement
+@:autoBuild(scout.element.macro.CustomElementBuilder.build())
 class ScoutElement extends CustomElement {
 
-  // var timer:Timer;
-  final properties:Map<String, Dynamic> = new Map();
-  var __scout_state:ScoutElementState = StateBooting;
+  final _scout_properties:Map<String, Dynamic>;
+  var _scout_state:ScoutElementState;
 
-  public function new(el:Element) {
-    super(el);
-    __scout_init();
-    __scout_state = StateReady;
+  public function new() {
+    super();
+    _scout_properties = [];
+    _scout_state = StateBooting;
+    _scout_init();
+    _scout_state = StateReady;
     update();
   }
 
-  function __scout_init() {
+  function _scout_init() {
     // noop
   }
 
-  // function requestUpdate() {
-  //   if (timer != null) return;
-  //   timer = Timer.delay(() -> {
-  //     timer = null;
-  //     update();
-  //   }, 10);
-  // }
-
   public function setProperty(name:String, value:Dynamic) {
-    properties.set(name, value);
+    _scout_properties.set(name, value);
     update();
   }
 
   public function getProperty(name:String) {
-    return properties.get(name);
+    return _scout_properties.get(name);
   }
 
   public function update() {
-    if (shouldRender() && __scout_state == StateReady) {
-      __scout_state = StateUpdating;
+    if (shouldRender() && _scout_state == StateReady) {
+      _scout_state = StateUpdating;
       var result = render();
       if (result != null) {
-        Renderer.render(result, el);
+        Renderer.render(result, cast _scout_shadow);
       }
-      __scout_state = StateReady;
+      _scout_state = StateReady;
     }
   }
 

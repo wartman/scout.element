@@ -55,13 +55,21 @@ class ScoutElementBuilder {
     if (initializers.length > 0) {
       fields = fields.concat((macro class {
 
-        override function __scout_init() {
-          super.__scout_init();
+        override function _scout_init() {
+          super._scout_init();
           $b{initializers};
         }
 
       }).fields);
     }
+
+    // This is a dumb hack to get the constructor to generate
+    // correctly. I don't know what I'm doing wrong TBH.
+    fields = fields.concat((macro class {
+
+      var _scout_wasConstructed:Bool = true;
+
+    }).fields);
 
     return fields.concat(newFields);
   }
