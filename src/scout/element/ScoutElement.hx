@@ -42,7 +42,7 @@ class ScoutElement extends CustomElement {
   }
 
   public function disconnectedCallback() {
-    // noop?
+    __state = StateDisconnected;
   }
 
   public function attributeChangedCallback(name:String, old:Null<String>, value:Null<String>) {

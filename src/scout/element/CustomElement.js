@@ -1,4 +1,4 @@
-class ScoutCustomElement extends HTMLElement {
+class scout_element_CustomElement extends HTMLElement {
 
   constructor() {
     super();

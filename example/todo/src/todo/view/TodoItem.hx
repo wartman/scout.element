@@ -9,7 +9,7 @@ import todo.model.Todo;
 @:element('todo-item', { extend: 'li' })
 class TodoItem extends ScoutElement {
 
-  // @:attr('class') var className:String = 'todo-item';
+  @:attr('class') var clsName:String = 'todo-item';
   @:prop var todo:Todo = null;
 
   public function removeItem() {
