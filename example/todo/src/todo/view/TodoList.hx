@@ -7,13 +7,13 @@ import todo.model.Todo;
 @:element('todo-list')
 class TodoList extends ScoutElement {
 
-  // @:attr('class') var className:String = 'todo-list';
+  @:prop( attribute = 'class' ) var clsName:String = 'todo-list';
   @:prop var todos:Array<Todo> = [];
   var initValue:String = '';
 
   function makeTodo(value:String) {
     todos.push(new Todo(
-      Std.string(todos.length + 1),
+      todos.length + 1,
       value,
       false
     ));

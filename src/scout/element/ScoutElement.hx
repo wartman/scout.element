@@ -6,6 +6,7 @@ import scout.html.Renderer;
 import scout.html.TemplateResult;
 
 enum ScoutElementState {
+  StateDisconnected;
   StateBooting;
   StateUpdating;
   StateReady;
@@ -15,39 +16,57 @@ enum ScoutElementState {
 @:autoBuild(scout.element.macro.CustomElementBuilder.build())
 class ScoutElement extends CustomElement {
 
-  final _scout_properties:Map<String, Dynamic>;
-  var _scout_state:ScoutElementState;
+  final __properties:Map<String, Dynamic>;
+  var __state:ScoutElementState;
 
   public function new() {
     super();
-    _scout_properties = [];
-    _scout_state = StateBooting;
-    _scout_init();
-    _scout_state = StateReady;
-    update();
+    __state = StateDisconnected;
+    __properties = [];
+    __init();
   }
 
-  function _scout_init() {
+  function __init() {
     // noop
   }
 
-  public function setProperty(name:String, value:Dynamic) {
-    _scout_properties.set(name, value);
+  function __onConnected() {
+    // noop
+  }
+
+  public function connectedCallback() {
+    __state = StateBooting;
+    __onConnected();
+    __state = StateReady;
     update();
   }
 
+  public function disconnectedCallback() {
+    // noop?
+  }
+
+  public function attributeChangedCallback(name:String, old:Null<String>, value:Null<String>) {
+    // noop
+  }
+
+  public function setProperty(name:String, value:Dynamic, ?options:{ silent:Bool }) {
+    __properties.set(name, value);
+    if (options != null && options.silent) return;
+    if (__state == StateReady) update();
+  }
+
   public function getProperty(name:String) {
-    return _scout_properties.get(name);
+    return __properties.get(name);
   }
 
   public function update() {
-    if (shouldRender() && _scout_state == StateReady) {
-      _scout_state = StateUpdating;
+    if (shouldRender() && __state == StateReady) {
+      __state = StateUpdating;
       var result = render();
       if (result != null) {
-        Renderer.render(result, cast _scout_shadow);
+        Renderer.render(result, cast __shadow);
       }
-      _scout_state = StateReady;
+      __state = StateReady;
     }
   }
 

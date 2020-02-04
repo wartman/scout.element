@@ -2,7 +2,7 @@ package todo.model;
 
 class Todo {
   
-  public var id:String;
+  public var id:Int;
   public var content:String;
   public var completed:Bool;
   public var editing:Bool = false;

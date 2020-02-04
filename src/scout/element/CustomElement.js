@@ -2,7 +2,7 @@ class ScoutCustomElement extends HTMLElement {
 
   constructor() {
     super();
-    this._scout_shadow = this.attachShadow({ mode: 'open' });
+    this.__shadow = this.attachShadow({ mode: 'open' });
     this._hx_constructor();
   }
 

@@ -25,10 +25,10 @@ class CustomElementBuilder {
       : macro js.Syntax.code('customElements.define({0}, {1}, {2})', ${el.params[0]}, $p{path}, ${el.params[1]});
 
     fields = fields.concat((macro class {
-      static var _scout_registered:Bool = false;
+      static var __registered:Bool = false;
       public static function register() {
-        if (!_scout_registered) {
-          _scout_registered = true;
+        if (!__registered) {
+          __registered = true;
           ${build};
         }
       }

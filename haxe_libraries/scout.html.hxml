@@ -1,3 +1,3 @@
--D scout.html=0.0.0
-# @install: lix --silent download "gh://github.com/wartman/scout.html#c01daa7eae598888149ffaaf48582b794984bf0c" into scout.html/0.0.0/github/c01daa7eae598888149ffaaf48582b794984bf0c
--cp ${HAXE_LIBCACHE}/scout.html/0.0.0/github/c01daa7eae598888149ffaaf48582b794984bf0c/src
+# @install: lix --silent download "gh://github.com/wartman/scout.html#b8834bf3d78eb0fcb1ef3601a15466c0e089b318" into scout.html/0.0.1-alpha.1/github/b8834bf3d78eb0fcb1ef3601a15466c0e089b318
+-cp ${HAXE_LIBCACHE}/scout.html/0.0.1-alpha.1/github/b8834bf3d78eb0fcb1ef3601a15466c0e089b318/src
+-D scout.html=0.0.1-alpha.1

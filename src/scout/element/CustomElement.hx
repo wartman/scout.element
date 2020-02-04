@@ -5,5 +5,5 @@ import js.html.ShadowRoot;
 
 @:native('ScoutCustomElement')
 extern class CustomElement extends Element {
-  var _scout_shadow:ShadowRoot;
+  var __shadow:ShadowRoot;
 }

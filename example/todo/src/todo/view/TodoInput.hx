@@ -29,11 +29,11 @@ class TodoInput extends ScoutElement {
     <input 
       class="todo-edit"
       value=${value}
-      onChange=${handleChange}
+      @change=${handleChange}
     />
     <button 
       class="create"
-      onClick=${handleSubmit}
+      @click=${handleSubmit}
     >${label}</button>
   ');
 
